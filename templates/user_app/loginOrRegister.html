@@ -587,6 +587,10 @@ top: 50px;
 
     }
 
+    .errorlist li {
+        color:red
+    }
+
 </style>
 
 <div class="container">
@@ -594,14 +598,13 @@ top: 50px;
         <div class="box boxShaddow"></div>
         <div class="box loginBox">
             <h2>LOGIN</h2>
-            <form class="form" method="post">
+            <form class="form" method="post" action="{% url "login-operator" %}">
                 {% csrf_token %}
                 <div class="f_row">
                     <label>Email</label>
 {#                    <input type="text" class="input-field" required>#}
                      {{ login_form.email }}
                      {{ login_form.email.errors }}
-
                     <u></u>
                 </div>
                 <div class="f_row last">
@@ -611,7 +614,7 @@ top: 50px;
                     {{ login_form.password.errors }}
                     <u></u>
                 </div>
-                <button class="btn"><span>GO</span><u></u>
+                <button class="btn" type="submit"><span>GO</span><u></u>
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 415.582 415.582" xml:space="preserve">
                                 <path d="M411.47,96.426l-46.319-46.32c-5.482-5.482-14.371-5.482-19.853,0L152.348,243.058l-82.066-82.064
                                       c-5.48-5.482-14.37-5.482-19.851,0l-46.319,46.32c-5.482,5.481-5.482,14.37,0,19.852l138.311,138.31
@@ -725,36 +728,36 @@ top: 50px;
             $('.formBox').addClass('level-reg-revers');
         }
     });
-    $('.btn').each(function() {
-        $(this).on('click', function(e){
-            e.preventDefault();
-
-            var finp =  $(this).parent('form').find('input');
-
-            console.log(finp.html());
-
-            if (!finp.val() == 0) {
-                $(this).addClass('active');
-            }
-
-            setTimeout(function () {
-
-                inP.val('');
-
-                $('.f_row').removeClass('shake focus');
-                $('.btn').removeClass('active');
-
-            }, 2000);
-
-            if(inP.val() == 0) {
-                inP.parent('.f_row').addClass('shake');
-            }
-
-            //inP.val('');
-            //$('.f_row').removeClass('focus');
-
-        });
-    });
+    {#$('.btn').each(function() {#}
+    {#    $(this).on('click', function(e){#}
+    {#        e.preventDefault();#}
+    {##}
+    {#        var finp =  $(this).parent('form').find('input');#}
+    {##}
+    {#        console.log(finp.html());#}
+    {##}
+    {#        if (!finp.val() == 0) {#}
+    {#            $(this).addClass('active');#}
+    {#        }#}
+    {##}
+    {#        setTimeout(function () {#}
+    {##}
+    {#            inP.val('');#}
+    {##}
+    {#            $('.f_row').removeClass('shake focus');#}
+    {#            $('.btn').removeClass('active');#}
+    {##}
+    {#        }, 2000);#}
+    {##}
+    {#        if(inP.val() == 0) {#}
+    {#            inP.parent('.f_row').addClass('shake');#}
+    {#        }#}
+    {##}
+    {#        //inP.val('');#}
+    {#        //$('.f_row').removeClass('focus');#}
+    {##}
+    {#    });#}
+    {#});#}
 
 
 </script>
