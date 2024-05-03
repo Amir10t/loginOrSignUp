@@ -594,15 +594,21 @@ top: 50px;
         <div class="box boxShaddow"></div>
         <div class="box loginBox">
             <h2>LOGIN</h2>
-            <form class="form">
+            <form class="form" method="post">
+                {% csrf_token %}
                 <div class="f_row">
-                    <label>Username</label>
-                    <input type="text" class="input-field" required>
+                    <label>Email</label>
+{#                    <input type="text" class="input-field" required>#}
+                     {{ login_form.email }}
+                     {{ login_form.email.errors }}
+
                     <u></u>
                 </div>
                 <div class="f_row last">
                     <label>Password</label>
-                    <input type="password" class="input-field" required>
+{#                    <input type="password" class="input-field" required>#}
+                    {{ login_form.password }}
+                    {{ login_form.password.errors }}
                     <u></u>
                 </div>
                 <button class="btn"><span>GO</span><u></u>
@@ -631,7 +637,9 @@ top: 50px;
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
                 <div class="f_row last">
                     <label>Email Id</label>
-                    <input type="text" class="input-field" required>
+{#                    <input type="text" class="input-field" required>#}
+                    {{ reset_password_form.email }}
+                    {{ reset_password_form.errors }}
                     <u></u>
                 </div>
                 <button class="btn"><span>Reset</span><u></u>
@@ -649,19 +657,24 @@ top: 50px;
             <h2>Register</h2>
             <form class="form">
                 <div class="f_row">
-                    <label>Username</label>
-                    <input type="text" class="input-field" required>
+                    <label>Email</label>
+{#                    <input type="text" class="input-field" required>#}
+                    {{ register_form.email }}
+
                     <u></u>
                 </div>
                 <div class="f_row">
                     <label>Password</label>
-                    <input type="password" class="input-field" required>
+{#                    <input type="password" class="input-field" required>#}
+                    {{ register_form.password }}
                     <u></u>
                 </div>
                 <div class="f_row last">
                     <label>Repeat Password</label>
-                    <input type="password" class="input-field" required>
+{#                    <input type="password" class="input-field" required>#}
+                    {{ register_form.repeat_password }}
                     <u></u>
+                    {{ reset_password_form.errors }}
                 </div>
                 <button class="btn-large">NEXT</button>
             </form>
