@@ -41,3 +41,25 @@ def login_operator(request: HttpRequest):
         }
 
         return render(request, "user_app/loginOrRegister.html", context)
+
+def register_operator(request: HttpRequest):
+    register_form = RegisterForm(request.POST)
+    if (register_form.is_valid()):
+        email = register_form.cleaned_data.get("email")
+        password = register_form.cleaned_data.get("password")
+        repeat_password = register_form.cleaned_data.get("repeat_password")
+        if User.objects.filter(email=email).exists() == False:
+            if password == repeat_password:
+                new_user = User(email=email)
+                new_user.set_password(password)
+                new_user.save()
+            else:
+                register_form.add_error("repeat_password", "pass != repeat pass")
+        else:
+            register_form.add_error("email", "Enter a new Email")
+
+        context = {
+            "register_from":register_form
+        }
+
+        return render(request, "user_app/loginOrRegister.html", context)
