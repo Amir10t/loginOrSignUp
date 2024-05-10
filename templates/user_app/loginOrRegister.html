@@ -24,7 +24,7 @@
                     {{ login_form.password.errors }}
                     <u></u>
                 </div>
-                <button class="btn" type="submit"><span>GO</span><u></u>
+                <button class="btn" type="submit" onclick="login()"><span>GO</span><u></u>
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 415.582 415.582" xml:space="preserve">
                                 <path d="M411.47,96.426l-46.319-46.32c-5.482-5.482-14.371-5.482-19.853,0L152.348,243.058l-82.066-82.064
                                       c-5.48-5.482-14.37-5.482-19.851,0l-46.319,46.32c-5.482,5.481-5.482,14.37,0,19.852l138.311,138.31
@@ -46,7 +46,8 @@
 </svg>
             </a>
             <h2>Reset Password</h2>
-            <form class="form">
+            <form class="form" method="post" action="{% url 'reset-password-operator' %}">
+                {% csrf_token %}
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
                 <div class="f_row last">
                     <label>Email Id</label>
@@ -104,3 +105,4 @@
 <script src="/static/jquery-3.4.1.min.js"></script>
 <script src="/static/custom.js">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

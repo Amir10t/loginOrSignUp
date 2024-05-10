@@ -34,33 +34,43 @@ $('.regTag').click(function(e){
         $('.formBox').addClass('level-reg-revers');
     }
 });
-// {#$('.btn').each(function() {#}
-// {#    $(this).on('click', function(e){#}
-// {#        e.preventDefault();#}
-// {##}
-// {#        var finp =  $(this).parent('form').find('input');#}
-// {##}
-// {#        console.log(finp.html());#}
-// {##}
-// {#        if (!finp.val() == 0) {#}
-// {#            $(this).addClass('active');#}
-// {#        }#}
-// {##}
-// {#        setTimeout(function () {#}
-// {##}
-// {#            inP.val('');#}
-// {##}
-// {#            $('.f_row').removeClass('shake focus');#}
-// {#            $('.btn').removeClass('active');#}
-// {##}
-// {#        }, 2000);#}
-// {##}
-// {#        if(inP.val() == 0) {#}
-// {#            inP.parent('.f_row').addClass('shake');#}
-// {#        }#}
-// {##}
-// {#        //inP.val('');#}
-// {#        //$('.f_row').removeClass('focus');#}
-// {##}
-// {#    });#}
-// {#});#}
+// $('.btn').each(function() {
+//     $(this).on('click', function(e){
+//         e.preventDefault();
+//         var finp =  $(this).parent('form').find('input');
+//
+//         console.log(finp.html());
+//
+//         if (!finp.val() == 0) {
+//             $(this).addClass('active');
+//         }
+//
+//         setTimeout(function () {
+//
+//             inP.val('');
+//
+//             $('.f_row').removeClass('shake focus');
+//             $('.btn').removeClass('active');
+//
+//         }, 2000);
+//
+//         if(inP.val() == 0) {
+//             inP.parent('.f_row').addClass('shake');
+//         }
+//
+//         //inP.val('');
+//         //$('.f_row').removeClass('focus');
+//
+//     });
+// });
+
+// function login(){
+//         Swal.fire({
+//             title: 'TITLE',
+//             text: "Text",
+//             icon: "warning",
+//             showCancelButton: false,
+//             confirmButtonColor: '#3085d6',
+//             confirmButtonText: "Confirm"
+//         })
+// }

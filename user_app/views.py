@@ -1,9 +1,12 @@
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.views.generic import View
+from utils.email_service import send_email
 from .forms import LoginForm, RegisterForm, ResetPassword
+from utils.email_service import send_email
+from utils.password_creator import number_password_generator
 
 
 # Create your views here.
@@ -30,9 +33,8 @@ def login_operator(request: HttpRequest):
         if(user is not None):
             if user.check_password(password):
                 login(request, user)
-                return HttpResponse("Welcome Back!")
             else:
-                login_form.add_error("password","Your Pass is not Correct")
+                return HttpResponse("Pass is not Correct")
         else:
             return HttpResponse("There is No User")
 
@@ -63,3 +65,18 @@ def register_operator(request: HttpRequest):
         }
 
         return render(request, "user_app/loginOrRegister.html", context)
+
+
+def reset_password_operator(request: HttpRequest):
+    reset_password_form = ResetPassword(request.POST)
+    if reset_password_form.is_valid():
+        email = reset_password_form.cleaned_data.get("email")
+        user: User = User.objects.filter(email=email).first()
+        if(user is not None):
+            new_password = number_password_generator(4)
+            user.set_password(new_password)
+            user.save()
+            send_email("Your New Pass", f"Your New Password is {new_password}", email)
+            return HttpResponse("Pass sent")
+        else:
+            return HttpResponse("There is No User")
